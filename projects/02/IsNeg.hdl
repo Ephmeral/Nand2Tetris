@@ -1,0 +1,19 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Or.hdl
+
+ /**
+ * IsNeg gate:
+ * out = 1 if (in[15] == 1 )
+ *       0 otherwise
+ */
+
+CHIP IsNeg {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    Or(a=in[15], b=false, out=out);
+}
