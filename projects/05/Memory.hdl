@@ -28,4 +28,21 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
+    //从RAM和屏幕键盘两者之间进行选择
+    DMux(in=load, sel=address[14], a=a, b=b);
+    RAM16K(in=in, load=a, address=address[0..13], out=ramOut);
+
+    //从屏幕和键盘两者之间进行选择
+    DMux(in=b, sel=address[13], a=c, b=d);
+    
+    Screen(in=in, load=c, address=address[0..12], out=screenOut);
+    Keyboard(out=keyboardOut);
+
+    //从屏幕和键盘输出中选择
+    Mux16(a=screenOut, b=keyboardOut, sel=address[13], out=skOut);
+
+    //从RAM和屏幕键盘输出中选择
+    Mux16(a=ramOut, b=skOut, sel=address[14], out=out);
+
+    // if address[14] == 1, screen and keyboard
 }

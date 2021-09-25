@@ -40,4 +40,55 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    
+    // 判断指令的类型, MSB=0 为 A 指令，MSB=1 为 C 指令
+    Not(in=instruction[15], out=isA);
+    Not(in=isA, out=isC);
+
+    // 如果为 C 指令，
+    And(a=isC, b=instruction[5], out=loadAR);
+    Mux16(a=instruction, b=ALUout, sel=loadAR, out=ARin);
+
+    // 如果为 A 指令，则将指令后14位加载到 A 寄存器中
+    Or(a=isA, b=instruction[5], out=isLoadAR);
+    ARegister(in=ARin, load=isLoadAR, out=ARout, out[0..14]=addressM);
+
+    // 根据 a 位域，判断将AR的输出，或者inM输入到ALU
+    Mux16(a=ARout, b=inM, sel=instruction[12], out=AMout);
+
+    // 如果是C指令，并规定写入M
+    And(a=isC, b=instruction[3], out=writeM);
+
+    // 如果是C指令，并规定写入DR
+    And(a=isC, b=instruction[4], out=isloadDR);
+    DRegister(in=ALUout, load=isloadDR, out=DRout);
+
+    And(a=isC, b=instruction[6], out=no);
+    And(a=isC, b=instruction[7], out=f);
+    And(a=isC, b=instruction[8], out=ny);
+    And(a=isC, b=instruction[9], out=zy);
+    And(a=isC, b=instruction[10], out=nx);
+    And(a=isC, b=instruction[11], out=zx);
+
+    ALU(x=DRout, y=AMout, zx=zx, nx=nx, zy=zy, ny=ny, f=f, no=no, out=ALUout, out=outM, zr=zr, ng=ng);
+
+    // 根据j位域和ALU的zr,ng位判断跳转
+    And(a=isC, b=instruction[0], out=isGT);
+    And(a=isC, b=instruction[1], out=isEQ);
+    And(a=isC, b=instruction[2], out=isLT);
+
+    And(a=ng, b=isLT, out=isLTjump);
+    And(a=zr, b=isEQ, out=isEQjump);
+    
+    Not(in=ng, out=notNG);
+    Not(in=zr, out=notZR);
+    And(a=notNG, b=notZR, out=isOUTGT);
+
+
+    And(a=isOUTGT, b=isGT, out=isGTJump);
+
+    Or(a=isLTjump, b=isEQjump, out=isJump);
+    Or(a=isJump, b=isGTJump, out=jump);
+        
+    PC(in=ARout, load=jump, inc=true, reset=reset, out[0..14]=pc);
 }
