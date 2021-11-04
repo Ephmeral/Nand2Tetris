@@ -43,53 +43,27 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
-   
-   /*自己写的，不知道哪里有错误，准备重新看一下
-   Mux16(a=x, b=false, sel=zx, out=zxx);
-   Not16(in=zxx, out=notx);
-   Mux16(a=zxx, b=notx, sel=nx, out=nxx);
+   // 把x置0并取反
+   Mux16(a=x, b=false, sel=zx, out=x1);
+   Not16(in=x1, out=notx);
+   Mux16(a=x1, b=notx, sel=nx, out=x2);
 
-   Mux16(a=y, b=false, sel=zy, out=zyy);
-   Not16(in=zyy, out=noty);
-   Mux16(a=zyy, b=noty, sel=ny, out=nyy);
 
-   And16(a=nxx, b=zyy, out=andxy);
-   Add16(a=nxx, b=zyy, out=addxy);
+   // 把y置0并取反
+   Mux16(a=y, b=false, sel=zy, out=y1);
+   Not16(in=y1, out=noty);
+   Mux16(a=y1, b=noty, sel=ny, out=y2);
+
+   And16(a=x2, b=y2, out=andxy);
+   Add16(a=x2, b=y2, out=addxy);
+
    Mux16(a=andxy, b=addxy, sel=f, out=o1);
 
-   Not16(in=o1, out=noto);
-   Mux16(a=o1, b=noto, sel=no, out=out, out = o2);
+   Not16(in=o1, out=noto1);
+   Mux16(a=o1, b=noto1, sel=no, out=out, out=o2);
 
+   IsNeg(in=o2, out=ng);
 
    Or16Way(in=o2, out=zr1);
    Not(in = zr1, out = zr);
-
-   IsNeg(in=o2, out=ng);
-   */
-   
-   // zx
-    Mux16(a = x, b = false, sel = zx, out = zxx);
-    Not16(in = zxx, out = notx);
-    Mux16(a = zxx, b = notx, sel = nx, out = nxx);
-
-    // zy
-    Mux16(a = y, b = false, sel = zy, out = zyy);
-    Not16(in = zyy, out = noty);
-    Mux16(a = zyy, b = noty, sel = ny, out = nyy);
-
-    // f
-    And16(a = nxx, b = nyy, out = f1);
-    Add16(a = nxx, b = nyy, out = f2);
-    Mux16(a = f1, b = f2, sel = f, out = o1);
-
-    // no
-    Not16(in = o1, out = o2);
-    Mux16(a = o1, b = o2, sel = no, out = out, out = o3);
- 
-    // zr
-    Or16Way(in = o3, out = zr1);
-    Not(in = zr1, out = zr);
-
-    // ng
-    IsNeg(in = o3, out = ng);
 }
