@@ -256,4 +256,4 @@ CHIP ALU {
 }
 ```
 
-参考：
+参考：[woai3c/nand2tetris: 计算机系统要素-从零开始构建现代计算机 (github.com)](https://github.com/woai3c/nand2tetris)
