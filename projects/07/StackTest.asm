@@ -12,7 +12,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -25,7 +25,7 @@ M=0
 0;JMP
 (LabelEQTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelEQEND0)
 @17
@@ -42,7 +42,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -55,7 +55,7 @@ M=0
 0;JMP
 (LabelEQTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelEQEND0)
 @16
@@ -72,7 +72,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -85,7 +85,7 @@ M=0
 0;JMP
 (LabelEQTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelEQEND0)
 @892
@@ -102,7 +102,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -115,7 +115,7 @@ M=0
 0;JMP
 (LabelLTTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelLTEND0)
 @891
@@ -132,7 +132,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -145,7 +145,7 @@ M=0
 0;JMP
 (LabelLTTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelLTEND0)
 @891
@@ -162,7 +162,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -175,7 +175,7 @@ M=0
 0;JMP
 (LabelLTTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelLTEND0)
 @32767
@@ -192,7 +192,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -205,7 +205,7 @@ M=0
 0;JMP
 (LabelGTTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelGTEND0)
 @32766
@@ -222,7 +222,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -235,7 +235,7 @@ M=0
 0;JMP
 (LabelGTTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelGTEND0)
 @32766
@@ -252,7 +252,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -265,7 +265,7 @@ M=0
 0;JMP
 (LabelGTTrue0)
 @SP
-A=A-1
+A=M-1
 M=-1
 (LabelGTEND0)
 @57
@@ -289,7 +289,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -301,7 +301,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -309,7 +309,7 @@ M=M-D
 @SP
 AM=M-1
 M=-M
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
@@ -321,7 +321,7 @@ A=M
 M=D
 @SP
 M=M+1
-@sp
+@SP
 AM=M-1
 D=M
 A=A-1
