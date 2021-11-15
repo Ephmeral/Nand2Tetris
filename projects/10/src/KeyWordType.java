@@ -1,0 +1,23 @@
+public interface KeyWordType {
+    String CLASS = "class";
+    String METHOD = "method";
+    String INT = "int";
+    String FUNCTION = "function";
+    String BOOLEAN = "boolean";
+    String CONSTRUCTOR = "constructor";
+    String CHAR = "char";
+    String VOID = "void";
+    String VAR = "var";
+    String STATIC = "static";
+    String FIELD = "field";
+    String LET = "let";
+    String DO = "do";
+    String IF = "if";
+    String ELSE = "else";
+    String WHILE = "while";
+    String RETURN = "return";
+    String TRUE = "true";
+    String FALSE = "false";
+    String NULL = "null";
+    String THIS = "this";
+}
